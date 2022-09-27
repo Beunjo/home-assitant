@@ -4,6 +4,13 @@ blueprint:
   domain: automation
 
   input:
+    entity_mode:
+      name: Sélection du mode
+      description: Entité de gestion du mode de gestion du chauffage (input_select)
+      selector:
+        entity:
+          domain: input_select
+          
     temperature_confort:
       name: Température Confort
       selector:
@@ -30,7 +37,7 @@ condition: []
 action:
   - if:
       - condition: state
-        entity_id: input_select.chauffage_mode_bureau
+        entity_id: !input entity_mode
         state: Confort
     then:
       - service: input_number.set_value
@@ -40,7 +47,7 @@ action:
           entity_id: input_number.temperature_cible_bureau
   - if:
       - condition: state
-        entity_id: input_select.chauffage_mode_bureau
+        entity_id: !input entity_mode
         state: Eco
     then:
       - service: input_number.set_value
