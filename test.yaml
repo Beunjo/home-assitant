@@ -6,10 +6,15 @@ blueprint:
   input:
     entity_mode:
       name: Sélection du mode
-      description: Entité de gestion du mode de gestion du chauffage (input_select)
       selector:
         entity:
           domain: input_select
+          
+    entity_consigne:
+      name: Consigne
+      selector:
+        entity:
+          domain: input_number
           
     temperature_confort:
       name: Température Confort
@@ -45,7 +50,7 @@ action:
         data:
           value: "{{ !input temperature_confort }}"
         target:
-          entity_id: input_number.temperature_cible_bureau
+          entity_id: !input entity_consigne
   - if:
       - condition: state
         entity_id: !input entity_mode
@@ -55,5 +60,5 @@ action:
         data:
           value: "{{ !input temperature_eco }}"
         target:
-          entity_id: input_number.temperature_cible_bureau
+          entity_id: !input entity_consigne
 mode: single
