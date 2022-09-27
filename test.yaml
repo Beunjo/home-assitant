@@ -29,6 +29,7 @@ blueprint:
           step: 0.5
           mode: slider
 
+alias: Chauffage Mode
 description: ''
 trigger:
   - platform: state
