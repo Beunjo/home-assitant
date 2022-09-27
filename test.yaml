@@ -11,7 +11,7 @@ blueprint:
           min: 14
           max: 22
           step: 0.5
-          initial: 19
+          mode: slider
           
     temperature_eco:
       name: Température Eco
@@ -21,6 +21,7 @@ blueprint:
           max: 22
           step: 0.5
           initial: 17
+          mode: slider
 
 description: ''
 trigger:
